@@ -57,3 +57,15 @@ assert (square(2) == 4) ;;
 
 let result_2 = 5 |> anon_inc |> square |> anon_inc |> anon_inc |> square ;;
 print_int result_2 ;;
+
+(* 10. Partial Application *)
+(* addx function takes an integer x but returns a function of x + y *)
+let addx x = fun y -> x + y ;;
+
+(* add5 is a function returned from addx5, nothing actuall gets "executed", it
+ * simply is a function that is: add5 (y) -> 5 + y *)
+let add5 = addx 5 ;;
+
+(* add5 actually executes the funciton adding 5 to y, in this case 2 *)
+let result_3 = add5 2 ;;
+assert (result_3 == 7) ;;
